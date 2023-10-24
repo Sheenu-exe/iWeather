@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>iWeather | Sachin</title>
+    
+</head>
+<link rel="icon" type="image/x-icon" href="https://img.icons8.com/?size=512&id=ZBWgLOFqpYdO&format=png">
+<body>
+    <div class="container">
+        
+        <div class="main">
+            <h1 id="name">--</h1>
+            <h1 id="temp">--</h1>
+            <h1 id="state">--</h1>
+        </div>
+        <div class="box">
+            <div class="icon"><img width="100px" id="img" src="" alt=""></div>
+            <ul>
+                <li class="feel">Feels Like: <span class="feels"></span></li>
+                <li class="max">Max Temperature: <span class="temp-max"></span></li>
+                <li class="min">Min Temperature: <span class="temp-min"></span></li>
+                <li class="longitude">H:   <span class="l"></span> L: <span class="lat"></span></li>
+                
+            </ul>
+        </div>
+        <div class="hum-spe">
+            
+            <div class="humidity">
+                <h1 class="head">Humidity:</h1>
+                
+                <div class="datamain"><i style="margin: 10px;" width="40" height="40" color="white" data-lucide="droplets" ></i><h1 class="humid"></h1></div>
+
+            </div>
+            
+            <div class="speed">
+                <h1 class="head">Speed:</h1>
+                <div class="datamain">
+                    <i style="margin: 10px;" width="40" height="40" color="white" data-lucide="wind"></i><h1 class="spd"></h1><span class="km"> km/h</span>
+                </div>
+            </div>
+        </div>
+        <div class="searchbar">
+            <input type="text" placeholder="Search for a city..." id="cityInput"/>
+            <button onclick="getCity()"><i data-lucide="search"></i>
+            </button>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Production version -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+  </script>
+ <script>
+    const apiKey ="c1c1f51e8874aa779d9b285da992a031"
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
+const searchBox= document.querySelector('.searchbar input');
+const searchBtn = document.querySelector('.searchbar button')
+
+async function checkWeather(city){
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`)
+    var data = await response.json();
+    console.log(data)
+    document.querySelector("#name").innerHTML= data.name;
+    document.querySelector("#temp").innerHTML= Math.round(data.main.temp )+ "°C";
+    document.querySelector("#state").innerHTML= data.weather[0].description;
+
+    
+
+    function bg(){
+        var weather = data.weather[0].main;
+        var container =  document.querySelector(".container")
+        if (weather =='few clouds'){
+            container.style.background="url(https://i.pinimg.com/564x/3b/48/ed/3b48ed901273ce44f687a449c19e5a39.jpg)";
+            
+        }
+       else if (weather == "Clouds"){
+        container.style.background="url(https://i.pinimg.com/originals/e6/cc/d8/e6ccd8ace830e9516fdf80fb29e45655.jpg)"
+        container.style.backgroundPosition='center'
+        container.style.backgroundSize="cover"
+       }
+       else if (weather == "Clear"){
+        container.style.background="url(https://static.wixstatic.com/media/59fc92_ecf911731bca481abc79cbf4490de3db~mv2.jpg/v1/fill/w_640,h_1296,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/59fc92_ecf911731bca481abc79cbf4490de3db~mv2.jpg)"
+       }
+       else if (weather == "thunderstorm"){
+        container.style.background="url(https://w.forfun.com/fetch/b5/b57bb661592401e51a194b6e0543ef6c.jpeg)"
+      
+       }
+       else if (weather == "Mist"){
+        container.style.background="url(https://e0.pxfuel.com/wallpapers/239/956/desktop-wallpaper-bridge-fog-city-nature-foggy-city.jpg)"
+        container.style.backgroundPosition="center";
+        container.style.backgroundSize="contain"
+      
+       }
+    }
+    bg()
+    var icon = data.weather[0].icon
+    document.getElementById('img').src=`http://openweathermap.org/img/wn/${icon}.png`
+
+    var feel = data.main.feels_like
+    document.querySelector('.feels').innerHTML=Math.round(feel)+"°C";
+
+    var tempMax = data.main.temp_max;
+    document.querySelector('.temp-max').innerHTML=(Math.round(tempMax)+2)+"°C";
+
+    var tempMin = data.main.temp_min;
+    document.querySelector('.temp-min').innerHTML=(Math.round(tempMin)-3)+"°C";
+
+    var long = data.coord.lon;
+    document.querySelector('.l').innerHTML=Math.round(long)+"°E";
+
+    var lat = data.coord.lat;
+    document.querySelector('.lat').innerHTML=Math.round(lat)+"°N";
+
+
+    var humid = data.main.humidity;
+    document.querySelector('.humid').innerHTML=humid+"%";
+
+    var speed = data.wind.speed;
+    document.querySelector('.spd').innerHTML=Math.round(speed*3.6);
+}
+ searchBtn,addEventListener("click",()=>{
+    checkWeather(searchBox.value)
+ } 
+ )
+
+
+  </script>
+</body>
+</html>

@@ -86,7 +86,6 @@ async function checkWeather(city){
         Temp.style.padding="0"
         Name.style.borderRadius="none"
         Temp.style.borderRadius="none"
-        Name.style.textShadow= "2px 2px #ff0000"
        }
        else if (desc == "scattered clouds"){
         container.style.background="url(https://images.unsplash.com/photo-1701060615948-87faa7a50d4a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"

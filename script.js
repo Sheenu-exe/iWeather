@@ -22,8 +22,8 @@ async function checkWeather(city){
         var weather = data.weather[0].main;
         var container =  document.querySelector(".container")
         if (desc =='few clouds'){
-            container.style.backgroundSize="cover"
             container.style.background="url(https://i.pinimg.com/564x/2a/68/29/2a68294a5d806c6c0f6b19d4d8804d56.jpg)";
+             container.style.backgroundSize="cover"
             Name.style.background="transparent"
         Temp.style.background="transparent"
         Name.style.padding="0"

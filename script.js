@@ -46,7 +46,7 @@ async function checkWeather(city){
         container.style.background="url(https://i.pinimg.com/originals/58/0d/9b/580d9b4e98ad7cb7db97df066bb2bfb3.jpg)"
         container.style.backgroundPosition="top"
         container.style.backgroundSize="cover"       
-        style.backgroundSize="cover"
+        container.style.backgroundSize="cover"
         Name.style.background="transparent"
         Temp.style.background="transparent"
         Name.style.padding="0"

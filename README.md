@@ -75,6 +75,14 @@ Upon opening the application, users can:
 
 The iWeather project is made possible by integrating the OpenWeather API. Special thanks to the developers and contributors of OpenWeather for providing valuable weather data.
 
-## License
+# iWeather Project - Access Link
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, or distribute the code according to the terms of the license.
+To experience the iWeather application, simply follow the link provided below:
+
+[i-weather-alpha.vercel.app](https://i-weather-alpha.vercel.app)
+
+Once on the website, you can input a location, click the search button, and access real-time weather information with a dynamic background based on the current climate.
+
+For any issues or feedback, please refer to the documentation or contact the project maintainers.
+
+Thank you for using iWeather!

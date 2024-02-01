@@ -25,11 +25,12 @@ async function checkWeather(city){
             container.style.background="url(https://i.pinimg.com/564x/2a/68/29/2a68294a5d806c6c0f6b19d4d8804d56.jpg)";
              container.style.backgroundSize="cover"
             Name.style.background="transparent"
-        Temp.style.background="transparent"
-        Name.style.padding="0"
-        Temp.style.padding="0"
-        Name.style.borderRadius="none"
-        Temp.style.borderRadius="none"
+        Name.style.background="rgba(0, 0, 0, 0.152)"
+        Temp.style.background="rgba(0, 0, 0, 0.152)"
+        Name.style.padding="3px 10px"
+        Temp.style.padding="3px 10px"
+        Name.style.borderRadius="10px"
+        Temp.style.borderRadius="10px"
             
         }
        else if (desc == "clouds"){
